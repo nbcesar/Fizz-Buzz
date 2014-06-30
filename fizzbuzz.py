@@ -3,35 +3,36 @@ import sys
 
 print "Fizz buzz counting up to any number"
 
-while True:
-    try:
-        if len(sys.argv) > 1:
-            max_num = sys.argv[1]
-        else:
-            max_num = raw_input('How high should I go: ')
-        number = int(max_num)
-        break
-    except ValueError:
-        print "Must be a number"
-
-for n in range(1,int(max_num) + 1):
-    if n % 5 == 0 and n % 3 == 0:
-        print "fizz buzz"
-    elif n % 5 == 0:
-        print "buzz"
-    elif n % 3 == 0:
-        print "fizz"
+def divisible(base, div):
+    if base % div == 0:
+        return True
     else:
-        print n
+        return False
 
-
-'''def subtractor(a, b): 
-   """I subtract b from a and return the result"""  
-   print "I'm a function. My name is {}".format(subtractor.__name__)
-   print "I'm about to subtract {} and {}\n\n".format(a,b)
-   return a - b  # i output a value by using the return statement
+def fizzbuzz(upper_limit=100):
+    
+            
+    for n in range(1,upper_limit + 1):
+        if divisible(n,5) and divisible(n,3):
+            print "fizz buzz"
+        elif divisible(n,5):
+            print "buzz"
+        elif divisible(n,3):
+            print "fizz"
+        else:
+            print n
 
 
 if __name__ == '__main__':
-    subtractor(3, 2)
-'''
+    while True:
+        try:
+            if len(sys.argv) > 1:
+                max_num = sys.argv[1]
+            else:
+                max_num = raw_input('How high should I go: ')
+            number = int(max_num)
+            break
+        except ValueError:
+            print "Must be a number"
+    fizzbuzz(number)
+
